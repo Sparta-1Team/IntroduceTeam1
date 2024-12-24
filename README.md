@@ -55,7 +55,7 @@
 |                           Infp                          |                          isfp                          |                             isfp                             |                             isfp                             |                             istj                             |
 |<p><img src="" "/></p> | <p><img src="" " /></p> | <p><img src="" /></p> | <p><img src="""></p> | <p><img src="" "/></p> |
 |          (깃헙 링크)          |            (깃헙 링크)           |           (깃헙 링크)           |             (깃헙 링크))             |          (깃헙 링크)          |
-|                          1조 팀장                           |                          1조 팀원                           |                          1조 팀원                           |                          1조  팀원                          |                          E1I5  팀원                          |
+|                          1조 팀장                           |                          1조 팀원                           |                          1조 팀원                           |                          1조  팀원                          |                          1조  팀원                          |
 |                           FrontEnd                           |                           FrontEnd                           |                           FrontEnd                           |                           FrontEnd                           |                           FrontEnd                           |
 
 <br />
