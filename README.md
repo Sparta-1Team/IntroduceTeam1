@@ -256,12 +256,12 @@ $ cd " "
 
   - [팀]과 [자신]에 대한 설명
 
-- - 팀원들의 블로그 주소
-    - 
-    - 
-    - 
-    - 
-    - 
+ - 팀원들의 블로그 주소
+    - 최다원(팀장) https://greatlepiz.tistory.com
+    - 송윤정(팀원) https://velog.io/@gkinfn/posts
+    - 이지은(팀원) https://queenriwon3.tistory.com/
+    - 조은종(팀원) https://cej4297.tistory.com/
+    - 문성준(팀원) https://sjmun09.tistory.com/
   - 객관적으로 살펴본 자신의 장점
   - 자신의 스타일 협업 스타일 소개
   - TMI
