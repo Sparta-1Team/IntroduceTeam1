@@ -52,11 +52,11 @@
 
 |                            최다원                            |                            문성준                            |                            이지은                            |                            송윤정                            |                            조은종                            |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                           Infp                          |                          isfp                          |                             isfp                             |                             isfp                             |                             istj                             |
-|<p><img src="https://github.com/user-attachments/assets/416fd222-2762-451f-9afc-0747dc8af492"/></p> | <p><img src="https://github.com/user-attachments/assets/c8fcbd92-6bc5-48ec-8f18-0751e37a6138" /></p> | <p><img src="https://github.com/user-attachments/assets/5e800a6e-9eb8-43e9-98ad-5a0fd9ef3489"/></p> | <p><img src="""></p> | <p><img src="https://github.com/user-attachments/assets/cf066c4d-db8c-4ad8-81ab-942d83c55c6a"/></p> |
-|          ([깃헙 링크](https://github.com/G-LePiz))          |            ([깃헙 링크](https://github.com/sjMun09))           |           ([깃헙 링크](https://github.com/queenriwon))           |             (깃헙 링크)             |          ([깃헙 링크](https://github.com/Roloya28))          |
+|                           ISTP                          |                          ISTP, ESTJ                          |                             ISTJ                             |                             INTP                             |                             INFP                             |
+|<p><img src="https://github.com/user-attachments/assets/416fd222-2762-451f-9afc-0747dc8af492"/></p> | <p><img src="https://github.com/user-attachments/assets/c8fcbd92-6bc5-48ec-8f18-0751e37a6138" /></p> | <p><img src="https://github.com/user-attachments/assets/5e800a6e-9eb8-43e9-98ad-5a0fd9ef3489"/></p> | <p><img src="https://cdn-icons-png.flaticon.com/512/105/105636.png"></p> | <p><img src="https://github.com/user-attachments/assets/cf066c4d-db8c-4ad8-81ab-942d83c55c6a"/></p> |
+|          [깃헙 링크](https://github.com/G-LePiz)          |            [깃헙 링크](https://github.com/sjMun09)           |           [깃헙 링크](https://github.com/queenriwon)           |             [깃헙 링크](https://github.com/bopeep934)             |          [깃헙 링크](https://github.com/Roloya28)          |
 |                          1조 팀장                           |                          1조 팀원                           |                          1조 팀원                           |                          1조  팀원                          |                          1조  팀원                          |
-|                           FrontEnd                           |                           FrontEnd                           |                           FrontEnd                           |                           FrontEnd                           |                           FrontEnd                           |
+|                           BackEnd                           |                           BackEnd                           |                           BackEnd                           |                           BackEnd                           |                           BackEnd                           |
 
 <br />
 
@@ -64,11 +64,14 @@
 
 ---
 
-\-  ! 
+\- ! 성공한 백엔드 개발자 되기
 
-\- ! 
+\- ! 어떠한 문제든 포기하지 않고, 끈기있게 해결하기
 
-\- 
+\- ! 이 꽉 깨물고 버팁니다.
+
+\- ! 팀과의 소통을 통해 프로젝트 마무리 잘하기
+
 
 <br />
 
@@ -76,13 +79,13 @@
 
 
 
-**프로젝트 명** : 우리 팀을 소개해요.
+**프로젝트 명** : 1조 팀원 소개
 
-**개발 기간** : 2024.12.21 ~ 2024.12.27 (7일)
+**개발 기간** : 2025.12.23 ~ 2024.12.26 (4일)
 
-**프로젝트 소개** : 팀원을 소개하는 웹사이트입니다.
+**프로젝트 소개** : 1조 팀원을 소개하는 웹 사이트입니다.
 
-**프로젝트 목표** : 프로젝트를 함께 만드는 팀원에 대해 소개합니다.
+**프로젝트 목표** : 앞으로 프로젝트를 함께 만드는 팀원에 대해 소개합니다.
 
 <br />
 
