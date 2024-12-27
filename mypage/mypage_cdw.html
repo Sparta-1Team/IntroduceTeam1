@@ -236,10 +236,10 @@
         };
 
 
-        let user = $('#name').text();
+        let user = $('#name').text(); //이름 변경
         // Firebase 인스턴스 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig); //초기화
+        const db = getFirestore(app); //db 연결
 
         try {
             const docRead = doc(db, 'modifyintro', '최다원');
@@ -259,10 +259,10 @@
             console.log(MInsta);
 
 
-            let modify = `<img class="profile" src="${MPic}">`
+            let modify = `<img class="profile" src="${MPic}">` //사진 넣기
 
             let mlink = `<a href="${MInsta}"><img class="sns-img"
-                    src="https://github.com/Sparta-1Team/myintroduce/blob/main/velog.png?raw=true"></a>`
+                    src="https://github.com/Sparta-1Team/myintroduce/blob/main/velog.png?raw=true"></a>` //자기소개
 
 
             $('#total').empty();
@@ -275,7 +275,7 @@
             console.error("데이터 불러오기 실패!", error);
         }finally{
             console.log("수정 데이터가 없습니다.");
-        }
+        } // 데이터 불러오기
 
         $("#guestbook-postingbutton").click(async function () {
 

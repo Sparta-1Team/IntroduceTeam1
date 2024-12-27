@@ -43,7 +43,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
@@ -58,68 +58,73 @@
         measurementId: "G-1SCXC4PL64"
     };
 
-    // Firebase 인스턴스 초기화
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    $(document).ready(function() {
+        // Firebase 인스턴스 초기화
+
+        initPage();
+
+        async function initPage() {
+
+            const docRef = doc(getDB(), 'modifyintro', $('#name').val());
+            const docSnap = await getDoc(docRef);
+            const data = docSnap.data();
+
+            if (data != undefined) {
+
+                let MPic = data['MPic'];
+                let MName = data['MName'];
+                let MMbti = data['MMbti'];
+                let Mhobby = data['Mhobby'];
+                let MIntro = data['MIntro'];
+                let MInsta = data['MInsta'];
+
+                $('#picture').val(MPic);
+                $('#name').val(MName);
+                $('#mbti').val(MMbti);
+                $('#hobby').val(Mhobby);
+                $('#selfintro').val(MIntro);
+                $('#insta').val(MInsta);
+            }
+
+        }
+
+        function getDB() {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            console.log(db);
+            return db;
+        }
 
 
 
+        $("#postingbtn").click(async function () {
+            let MPic = $('#picture').val();
+            let MName = $('#name').val();
+            let MMbti = $('#mbti').val();
+            let Mhobby = $('#hobby').val();
+            let MIntro = $('#selfintro').val();
+            let MInsta = $('#insta').val();
 
-    $("#postingbtn").click(async function () {
+            const docRef = doc(getDB(), 'modifyintro', MName);
+            await deleteDoc(docRef);
 
+            let up = {
+                'MPic': MPic,
+                'MName': MName,
+                'MMbti': MMbti,
+                'Mhobby': Mhobby,
+                'MIntro': MIntro,
+                'MInsta': MInsta
+            };
+            const newDocRef = doc(getDB(), 'modifyintro', MName);
+            await setDoc(newDocRef, up);
 
-        let MPic = $('#picture').val();
-        let MName = $('#name').val();
-        let MMbti = $('#mbti').val();
-        let Mhobby = $('#hobby').val();
-        let MIntro = $('#selfintro').val();
-        let MInsta = $('#insta').val();
-        const docRef = doc(db, 'modifyintro', MName);
-        await deleteDoc(docRef);
+            alert('수정 완료!');
 
-        let up = {
-            'MPic': MPic,
-            'MName': MName,
-            'MMbti': MMbti,
-            'Mhobby': Mhobby,
-            'MIntro': MIntro,
-            'MInsta': MInsta
-        };
-        const newDocRef = doc(db, 'modifyintro', MName);
-        await setDoc(newDocRef, up);
-        alert('수정 완료!');
-        window.location.href='../mypage/mypage_yj.html'
+            window.location.href='../mypage/mypage_yj.html'
+        })
+
     })
-
-
-
-    let docs = await getDocs(collection(db, 'modifyintro'));
-    docs.forEach((doc) => {
-        let row = doc.data();
-
-        let MPic = row['MPic'];
-        let MName = row['MName'];
-        let MMbti = row['MMbti'];
-        let Mhobby = row['Mhobby'];
-        let MIntro = row['MIntro'];
-        let MInsta = row['MInsta'];
-
-
-        let modify = `<img class="profile" src="${MPic}">
-                <div id="mname">
-                    <h1 id="mname2">${MName}</h1>
-                </div>
-                <p class="title">백엔드 개발 지망생</p>
-                <br><br><br><br>
-            </div>`
-
-        $('#total').empty();
-        $('#total').append(modify);
-        $('#selfintro2').empty();
-        $('#selfintro2').append(MIntro);
-
-    });
-
 
 
 </script>
@@ -142,8 +147,8 @@
                     <tr>
                         <td>이름</td>
                         <td>
-                            <input class="form-control" id="name" type="text" value="송윤정"
-                                aria-label="Disabled input example" disabled>
+                            <input class="form-control" id="name" type="text" value="송윤정정" aria-label="Disabled input example" disabled>
+
                         </td>
                     </tr>
                     <tr>
@@ -190,9 +195,9 @@
             </table>
 
             <div class="button-container">
-                <button type="button" id="postingbtn" class="btn btn-outline-info">수정</button>
+                <button type="button" id="postingbtn" class="btn btn-outline-info">등록</button>
                 <button type="button" id="cancelbtn" class="btn btn-outline-dark"
-                    onclick="window.location.href='../mypage/mypage_yj.html'">취소</button>
+                    onclick="window.location.href='../mypage/mypage_cdw.html'">취소</button>
             </div>
 
         </div>

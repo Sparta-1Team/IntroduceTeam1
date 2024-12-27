@@ -43,7 +43,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
@@ -58,38 +58,74 @@
         measurementId: "G-1SCXC4PL64"
     };
 
+    $(document).ready(function() {
+        // Firebase 인스턴스 초기화
 
-    // Firebase 인스턴스 초기화
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+        initPage();
 
-    $("#postingbtn").click(async function () {
-        let MPic = $('#picture').val();
-        let MName = $('#name').val();
-        let MMbti = $('#mbti').val();
-        let Mhobby = $('#hobby').val();
-        let MIntro = $('#selfintro').val();
-        let MInsta = $('#insta').val();
+        async function initPage() {
 
-        const docRef = doc(db, 'modifyintro', MName);
-        await deleteDoc(docRef);
+            const docRef = doc(getDB(), 'modifyintro', $('#name').val());
+            const docSnap = await getDoc(docRef);
+            const data = docSnap.data();
 
-        let up = {
-            'MPic': MPic,
-            'MName': MName,
-            'MMbti': MMbti,
-            'Mhobby': Mhobby,
-            'MIntro': MIntro,
-            'MInsta': MInsta
-        };
-        const newDocRef = doc(db, 'modifyintro', MName);
-        await setDoc(newDocRef, up);
+            if (data != undefined) {
 
-        alert('수정 완료!');
+                let MPic = data['MPic'];
+                let MName = data['MName'];
+                let MMbti = data['MMbti'];
+                let Mhobby = data['Mhobby'];
+                let MIntro = data['MIntro'];
+                let MInsta = data['MInsta'];
 
-        window.location.href='../mypage/mypage_msj.html'
+                $('#picture').val(MPic);
+                $('#name').val(MName);
+                $('#mbti').val(MMbti);
+                $('#hobby').val(Mhobby);
+                $('#selfintro').val(MIntro);
+                $('#insta').val(MInsta);
+            }
+
+        }
+
+        function getDB() {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            console.log(db);
+            return db;
+        }
+
+
+
+        $("#postingbtn").click(async function () {
+            let MPic = $('#picture').val();
+            let MName = $('#name').val();
+            let MMbti = $('#mbti').val();
+            let Mhobby = $('#hobby').val();
+            let MIntro = $('#selfintro').val();
+            let MInsta = $('#insta').val();
+
+            const docRef = doc(getDB(), 'modifyintro', MName);
+            await deleteDoc(docRef);
+
+            let up = {
+                'MPic': MPic,
+                'MName': MName,
+                'MMbti': MMbti,
+                'Mhobby': Mhobby,
+                'MIntro': MIntro,
+                'MInsta': MInsta
+            };
+            const newDocRef = doc(getDB(), 'modifyintro', MName);
+            await setDoc(newDocRef, up);
+
+            alert('수정 완료!');
+
+            window.location.href='../mypage/mypage_moon.html'
+        })
 
     })
+
 
 </script>
 
@@ -161,7 +197,7 @@
             <div class="button-container">
                 <button type="button" id="postingbtn" class="btn btn-outline-info">등록</button>
                 <button type="button" id="cancelbtn" class="btn btn-outline-dark"
-                onclick="window.location.href='../mypage/mypage_msj.html'">취소</button>
+                    onclick="window.location.href='../mypage/mypage_cdw.html'">취소</button>
             </div>
 
         </div>
