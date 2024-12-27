@@ -88,6 +88,7 @@
             height: 30px;
         }
 
+
         #snscontainer {
             display: flex;
             flex-direction: row;
@@ -98,6 +99,7 @@
             overflow: hidden;
             margin-bottom: 4px;
         }
+
 
         .guestbook-posting {
             display: flex;
@@ -214,13 +216,14 @@
     </style>
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-
+        // Firebase 구성 정보 설정
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
             apiKey: "AIzaSyCDrR7VoWYioSlzxW3S5qZAAsQbxrbBhlg",
@@ -232,13 +235,14 @@
             measurementId: "G-1SCXC4PL64"
         };
 
-        let user = $('#name').text();
+
+        let user = $('#name').text(); //이름 변경
         // Firebase 인스턴스 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig); //초기화
+        const db = getFirestore(app); //db 연결
 
         try {
-            const docRead = doc(db, 'modifyintro', '이지은');
+            const docRead = doc(db, 'modifyintro', '최다원');
             const docSnap = await getDoc(docRead);
 
             let mlow = docSnap.data();
@@ -255,10 +259,10 @@
             console.log(MInsta);
 
 
-            let modify = `<img class="profile" src="${MPic}">`
+            let modify = `<img class="profile" src="${MPic}">` //사진 넣기
 
             let mlink = `<a href="${MInsta}"><img class="sns-img"
-                    src="https://github.com/Sparta-1Team/myintroduce/blob/main/velog.png?raw=true"></a>`
+                    src="https://github.com/Sparta-1Team/myintroduce/blob/main/velog.png?raw=true"></a>` //자기소개
 
 
             $('#total').empty();
@@ -271,7 +275,7 @@
             console.error("데이터 불러오기 실패!", error);
         } finally {
             console.log("수정 데이터가 없습니다.");
-        }
+        } // 데이터 불러오기
 
         $("#guestbook-postingbutton").click(async function () {
 
@@ -308,28 +312,28 @@
             let id = doc.id;
 
             let temp_guestbook = `<div class="guestbook-listrow" id="comment-${id}">
-            <img src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTY0/MDAxNjA0MjI4ODc1MDgx.20zY0e0fjnqLYvyFxN2FuZl75yr0p-lejDrTdLzRargg.aDqPo9fsnwOujN45rK3vW-dUi2usn0wBwQE8xmstEBUg.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%EA%B0%88%EC%83%89.jpg?type=w400"
-                class="img-thumbnail guestbook-repleimage" alt="...">
-            <div class="guestbook-listcolumn">
-                <div style="display: flex; align-items: center;">
-                    <h6>${nickname}</h6>
-                    <div style="display: flex; margin-left: auto; align-items: center; gap:5px;">
-                        <div class="form-floating mb-3 style="margin-left: auto;">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-auto">
-                                    <input type="password" id="userPassword" class="form-control" aria-describedby="passwordHelpInline">
-                                </div>
-                            </div>                            
+                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMDExMDFfMTY0/MDAxNjA0MjI4ODc1MDgx.20zY0e0fjnqLYvyFxN2FuZl75yr0p-lejDrTdLzRargg.aDqPo9fsnwOujN45rK3vW-dUi2usn0wBwQE8xmstEBUg.JPEG.gambasg/%EC%9C%A0%ED%8A%9C%EB%B8%8C_%EA%B8%B0%EB%B3%B8%ED%94%84%EB%A1%9C%ED%95%84_%EA%B0%88%EC%83%89.jpg?type=w400"
+                    class="img-thumbnail guestbook-repleimage" alt="...">
+                <div class="guestbook-listcolumn">
+                    <div style="display: flex; align-items: center;">
+                        <h6>${nickname}</h6>
+                        <div style="display: flex; margin-left: auto; align-items: center; gap:5px;">
+                            <div class="form-floating mb-3 style="margin-left: auto;">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                        <input type="password" class="user-password" data-id="${id}" class="form-control" aria-describedby="passwordHelpInline">
+                                    </div>
+                                </div>                            
+                            </div>
+                            <button class="btn guestbook-correctionBtn" id="correctionButton" data-id="${id}">수정</button>
+                            <button class="btn guestbook-deleteBtn" id="deleteButton" data-id="${id}">삭제</button>
                         </div>
-                        <button class="btn guestbook-correctionBtn" id="correctionButton" data-id="${id}">수정</button>
-                        <button class="btn guestbook-deleteBtn" id="deleteButton" data-id="${id}">삭제</button>
                     </div>
+                    <p class="guestbook-listcontent">${content}</p>
+                    <p class="guestbook-listdatetime">${datetime}</p>
                 </div>
-                <p class="guestbook-listcontent">${content}</p>
-                <p class="guestbook-listdatetime">${datetime}</p>
-            </div>
 
-        </div>`
+            </div>`
 
             $('#guestbook-list').append(temp_guestbook);
 
@@ -339,20 +343,14 @@
         //삭제 코드
         $(document).on('click', '.guestbook-deleteBtn', async function () {
             const commentId = $(this).data("id");
-            const passwordUser = $('#userPassword').val();
-
-            // 삭제 확인
-            const userConfirmed = confirm("정말로 이 방명록을 삭제하시겠습니까?");
-            if (!userConfirmed) {
-                return;
-            }
+            const passwordUser = $(`.user-password[data-id='${commentId}']`).val();
 
             const docRef = doc(db, `guestBook/${user}/entries`, commentId);
-
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 let row = docSnap.data();
                 let password = row['password'];
+                console.log(passwordUser, "/", password)
 
                 if (password !== passwordUser) {
                     alert('비밀번호가 올바르지 않습니다.');
@@ -361,15 +359,17 @@
 
                 await deleteDoc(docRef);
                 $(`#comment-${commentId}`).remove();
-                alert('방명록이 삭제되었습니다!');
+                alert('댓글이 삭제되었습니다!');
             } else {
-                alert("방명록을 찾을 수 없습니다.");
+                alert("댓글을 찾을 수 없습니다.");
             }
         });
 
+
+
         $(document).on('click', '.guestbook-correctionBtn', async function () {
             const commentId = $(this).data("id");
-            const passwordUser = $('#userPassword').val();
+            const passwordUser = $(`.user-password[data-id='${commentId}']`).val();
 
             const docRef = doc(db, `guestBook/${user}/entries`, commentId);
             const docSnap = await getDoc(docRef);
@@ -418,6 +418,7 @@
 
 
 
+
     </script>
 
 </head>
@@ -433,8 +434,8 @@
 
         <section>
             <h2>자기소개</h2>
-            <div id="selfintro2">
-                <p class="subtext">데이터분석과 인공지능 위주로 공부하다가 백엔드로 트랙을 바꾼지 얼마 되진 않았습니다.<br>
+            <div>
+                <p class="subtext" id="selfintro2">데이터분석과 인공지능 위주로 공부하다가 백엔드로 트랙을 바꾼지 얼마 되진 않았습니다.<br>
                     하지만 끈기있게 백엔드와 마주하겠습니다. 감사합니다!</p>
                 <p class="subtext">좋아하는 것: 고양이 </p>
                 <p class="subtext">취미: 야구관람(롯데자이언츠), 유튜브감상, 가끔 애니도 봅니다.</p>
@@ -497,8 +498,6 @@
                         <p class="card-text" style="font-size: 14x;">수면용 스마트 전구, 코로나 대응 마이크 착용 판별기<br>시각장애인 전용 숟가락</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <br>
@@ -506,6 +505,7 @@
         <section>
             <h2>내 연락처</h2>
             <div class="sns">
+
                 <p class="text">you can meet me !</p>
                 <div id="snscontainer">
                     <a href="https://github.com/queenriwon"><img class="sns-img" src="../github.png"></a>
@@ -518,10 +518,12 @@
         <br>
 
 
+
         <div align="right" class="modify">
             <button type="button" id="postingbtn" onclick="window.location.href='../modifypage/MemberIntro_ijieun.html'"
                 class="btn btn-outline-info"> 수정 </button>
         </div>
+
 
         <section>
             <div>

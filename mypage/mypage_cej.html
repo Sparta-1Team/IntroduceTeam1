@@ -236,13 +236,13 @@
         };
 
 
-        let user = $('#name').text();
+        let user = $('#name').text(); //이름 변경
         // Firebase 인스턴스 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig); //초기화
+        const db = getFirestore(app); //db 연결
 
         try {
-            const docRead = doc(db, 'modifyintro', '조은종');
+            const docRead = doc(db, 'modifyintro', '최다원');
             const docSnap = await getDoc(docRead);
 
             let mlow = docSnap.data();
@@ -259,10 +259,10 @@
             console.log(MInsta);
 
 
-            let modify = `<img class="profile" src="${MPic}">`
+            let modify = `<img class="profile" src="${MPic}">` //사진 넣기
 
             let mlink = `<a href="${MInsta}"><img class="sns-img"
-                    src="https://github.com/Sparta-1Team/myintroduce/blob/main/velog.png?raw=true"></a>`
+                    src="https://github.com/Sparta-1Team/myintroduce/blob/main/velog.png?raw=true"></a>` //자기소개
 
 
             $('#total').empty();
@@ -275,7 +275,7 @@
             console.error("데이터 불러오기 실패!", error);
         }finally{
             console.log("수정 데이터가 없습니다.");
-        }
+        } // 데이터 불러오기
 
         $("#guestbook-postingbutton").click(async function () {
 
@@ -321,7 +321,7 @@
                             <div class="form-floating mb-3 style="margin-left: auto;">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input type="password" id="userPassword" class="form-control" aria-describedby="passwordHelpInline">
+                                        <input type="password" class="user-password" data-id="${id}" class="form-control" aria-describedby="passwordHelpInline">
                                     </div>
                                 </div>                            
                             </div>
@@ -341,22 +341,16 @@
 
 
         //삭제 코드
-        $(document).on('click', '.guestbook-deleteBtn', async function () {
-            const commentId = $(this).data("id");
-            const passwordUser = $('#userPassword').val();
-
-            // 삭제 확인
-            const userConfirmed = confirm("정말로 이 방명록을 삭제하시겠습니까?");
-            if (!userConfirmed) {
-                return;
-            }
+        $(document).on('click', '.guestbook-deleteBtn', async function () { 
+            const commentId = $(this).data("id"); 
+            const passwordUser = $(`.user-password[data-id='${commentId}']`).val();
 
             const docRef = doc(db, `guestBook/${user}/entries`, commentId);
-
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 let row = docSnap.data();
                 let password = row['password'];
+                console.log(passwordUser, "/", password)
 
                 if (password !== passwordUser) {
                     alert('비밀번호가 올바르지 않습니다.');
@@ -365,15 +359,17 @@
 
                 await deleteDoc(docRef);
                 $(`#comment-${commentId}`).remove();
-                alert('방명록이 삭제되었습니다!');
+                alert('댓글이 삭제되었습니다!');
             } else {
-                alert("방명록을 찾을 수 없습니다.");
+                alert("댓글을 찾을 수 없습니다.");
             }
         });
 
+        
+
         $(document).on('click', '.guestbook-correctionBtn', async function () {
             const commentId = $(this).data("id");
-            const passwordUser = $('#userPassword').val();
+            const passwordUser = $(`.user-password[data-id='${commentId}']`).val();
 
             const docRef = doc(db, `guestBook/${user}/entries`, commentId);
             const docSnap = await getDoc(docRef);
@@ -392,7 +388,7 @@
 
             $('#nickname').val(nickname);
             $('#content').val(content);
-            $('#password').val(password);
+            $('#password').val(password); 
 
 
             //수정시 작성버튼(업로드 내용과 비슷하나 updateDoc을 사용)
@@ -422,8 +418,8 @@
 
 
 
-    </script>
 
+    </script>
 
 </head>
 
@@ -477,16 +473,12 @@
         <section>
             <h2>내 연락처</h2>
             <div class="sns">
+
                 <p class="text">you can meet me !</p>
                 <div id="snscontainer">
-
-                    <a href="https://github.com/Roloya28"><img class="sns-img"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1DNsfskjJtWhewcdCt8_4spNsZf7lmL3wKQ&s"></a>
-                    <div id="link"><a href="https://cej4297.tistory.com/"><img class="sns-img"
-                                src="https://i.namu.wiki/i/Jz0MFNR7_7LHx1Yda0Hy6929g3BD5fWmaARdUMMFPkFIAVC_ewY7BEcoIGhepmTKRBKmSxRSUBjI7pklIZLaAA.svg"></a>
-                    </div>
-                    <a href="https://www.instagram.com/choej42/"><img class="sns-img"
-                            src="https://i.namu.wiki/i/PpCUHjc8PoAlAWoSip-m3KtgYMq7Ft1sI2BiCioMrclYCFdnjCEVKdPyXJ3yqXgHjgboqOp-8Q9z71WTisQy_A.svg"></a>
+                    <a href="https://github.com/Roloya28"><img class="sns-img" src="../github.png"></a>
+                    <a href="https://www.instagram.com/choej42/"><img class="sns-img" src="../instagram.png"></a>
+                    <a href="https://cej4297.tistory.com/"><img class="sns-img" src="../tistory.png"></a>
                 </div>
             </div>
         </section>
@@ -498,6 +490,7 @@
             <button type="button" id="postingbtn" onclick="window.location.href='../modifypage/MemberIntro_cej.html'"
                 class="btn btn-outline-info"> 수정 </button>
         </div>
+
 
         <section>
             <div>
