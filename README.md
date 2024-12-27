@@ -231,24 +231,35 @@ $ cd " "
 - **헤더** 
 
   - 상단 고정, 아래 요소와 겹치지 않음
+ 
+- **프로필 카드**
+  - 커서 올리면 색, 그림자 생기는 hover 기능
+  - 팀원 프로필 아래 사람(아이콘) 누르면 개인 상세페이지 연결
 
-
-    
-
-- **프로필카드**
+- **개인 상세 페이지**
 
   - 커서 올리면 색, 그림자 변하는 기능(hover)
 
-  - 본인이 사용하는 블로그 버튼을 클릭하면 해당 url 연결
-  - 팀원 프로필 아래 사람(아이콘) 누르면 개인정보 상세 모달창
+  - 본인이 사용하는 sns 아이콘을 클릭하면 해당 url 연결
+    
+- **방명록**
+  - 방명록 쓰기
+    - 일반 작성 : 닉네임 및 방명록 내용을 입력하고 '작성' 아이콘을 선택하면 추가됨.
+    - 비밀 번호 : 비밀번호 선택기능을 넣음.  
+  - 방명록 수정
+    - 수정 버튼 : 수정 버튼을 눌렀을 때, 방명록 및 닉네임을 수정할 수 있음.
+  - 방명록 삭제
+    - 삭제 버튼 : 삭제 버튼을 눌렀을 때, 삭제가능. 
+  
    
 - 프로젝트에 쓰인 내용 :
 
-  - 우리 팀만의 특징과 추구하는 궁극적인 목표
+  - 우리 팀만의 궁극적인 목표와 규칙 및 약속
 
-  - 우리 팀의 약속
+  - 자기소개
 
   - [팀]과 [자신]에 대한 설명
+
 
  - 팀원들의 블로그 주소
     - 최다원(팀장) https://greatlepiz.tistory.com
@@ -256,10 +267,69 @@ $ cd " "
     - 이지은(팀원) https://queenriwon3.tistory.com/
     - 조은종(팀원) https://cej4297.tistory.com/
     - 문성준(팀원) https://sjmun09.tistory.com/
-  - 객관적으로 살펴본 자신의 장점
-  - 자신의 스타일 협업 스타일 소개
+      
+  - 객관적으로 살펴본 자신의 언어 레벨
+    
+  - 자신의 포부
 
 
 
 
+<br />
+
+
+
+## 트러블 슈팅
+
+<br />
+
+
+- **최다원**
+
+문제 1 -
+
+
+- **문성준**
+
+문제 1 -
+
+
+- **이지은**
+
+문제 1 - 경로 관련
+ 
+
+  - 작성코드(오류)
+  - ![image](https://github.com/user-attachments/assets/98a211bf-5761-4c0a-83e8-cfd00db4476f)
+
+  - 오류코드
+  - ![image](https://github.com/user-attachments/assets/28f0451f-d25b-4668-8e65-4859bd213368)
+
+
+
+Uncaught FirebaseError: Invalid collection reference. Collection references must have an odd number of segments, but guestBook/entries has 2.
+ 
+
+경로에 페이지 이름을 추가하여 각 개인페이지마다 개별적으로 방명록을 작성할 수 있도록 구성했다.
+
+이때 그냥 db > guestBook > user 로 경로를 간단하게 구성하고 싶었지만 방명록을 작성할 때 firebase자체적으로 특정 갯수의 경로를 지원하지 않는다는 오류가 있었다. 따라서 db > guestBook > user > entries 순의 경로를 구현했다.
+
+  - 작성코드(해결)
+![image](https://github.com/user-attachments/assets/314b7b95-5aaf-44ea-86f7-38e00904ada0)
+
+
+
+- **송윤정**
+
+문제 1 -
+
+
+- **조은종**
+
+문제 1 -
+
+
+
+<br />
+<br />
 <br />
