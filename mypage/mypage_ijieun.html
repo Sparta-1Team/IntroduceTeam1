@@ -242,7 +242,7 @@
         const db = getFirestore(app); //db 연결
 
         try {
-            const docRead = doc(db, 'modifyintro', '이지은은');
+            const docRead = doc(db, 'modifyintro', '이지은');
             const docSnap = await getDoc(docRead);
 
             let mlow = docSnap.data();
